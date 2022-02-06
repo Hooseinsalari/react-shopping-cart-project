@@ -1,0 +1,17 @@
+.container {
+    width: 16rem;
+    /* height: 23rem; */
+    margin: 20px;
+    padding: 10px;
+    background: cornflowerblue;
+}
+
+.container__title {
+    text-overflow: clip;
+}
+
+img {
+    width: 15rem;
+    height: 15rem;
+    overflow: hidden;
+}
