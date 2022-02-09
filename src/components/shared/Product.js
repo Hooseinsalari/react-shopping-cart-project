@@ -23,7 +23,6 @@ const Product = ({productData}) => {
             <p>Details</p>
             {quantityCount(state, productData.id) === 1 && <button onClick={() => dispatch({type: "REMOVE_ITEM", payload: productData})}>remove</button>}
             {quantityCount(state, productData.id) > 1 && <button onClick={() => dispatch({type: "DECREASE", payload: productData})}>-</button>}
-            {/* {quantityCount(state, productData.id) >= 1 && <p>ssd</p>} */}
             {
                 isInCart(state, productData.id) ?
                 <button onClick={() => dispatch({type: "INCREASE", payload: productData})}>add</button>:

@@ -15,7 +15,8 @@ const quantityCount = (state, id) => {
     else {
         return state.selectedItems[index].quantity;
     }
-
 }
 
-export {shortenedTitle, isInCart, quantityCount};
+
+
+export {shortenedTitle, isInCart, quantityCount };
