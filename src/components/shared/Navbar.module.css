@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(75, 75, 75);
+    background-color: #fff;
 }
 
 .navCart {
@@ -17,7 +17,7 @@
 }
 
 .proCount {
-    background: turquoise;
+    background: #fff;
     border-radius: 50%;
     position: absolute;
     right: 30px;
@@ -27,7 +27,7 @@
 }
 
 a {
-    color: #fff;
+    color: rgb(0, 0, 0);
     font-size: 18px;
     text-decoration: none;
     margin: 20px;
@@ -46,7 +46,7 @@ a::before {
     bottom: 0;
     width: 0;
     height: 2px;
-    background-color: #fff;
+    background-color: #000;
     transition: all 0.5s ease-in-out;
 }
 
@@ -69,12 +69,18 @@ a:hover::before {
         flex-direction: column;
         width: 50%;
         height: 100%;
-        background-color: tomato;
-        transition: all 0.5s;
+        background-color: rgb(243, 243, 243);
+        transition: all 0.5s ease;
     }
 
     .navItems {
-        width: 0;
+        /* width: 0; */
+        /* display: none; */
+        transform: translateX(-100%);
+    }
+
+    .openMenu {
+        transform: translateX(0);
     }
 
     .navToggle, .openNav {
@@ -89,7 +95,7 @@ a:hover::before {
         position: absolute;
         width: 32px;
         height: 3px;
-        background-color: #fff;
+        background-color: #000;
         border-radius: 10px;
         transition: 0.5s ease-in-out;
     }
@@ -98,7 +104,7 @@ a:hover::before {
         content: "";
         position: absolute;
         height: 3px;
-        background-color: #fff;
+        background-color: #000;
         border-radius: 10px;
         transition: 0.5s ease-in-out;
     }
@@ -115,7 +121,6 @@ a:hover::before {
     }
 
     .openNav .navBars {
-        /* transform: translateX(40px); */
         background: transparent;
     }
 
