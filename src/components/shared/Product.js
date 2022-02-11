@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 // style
 import styles from "./Product.module.css";
@@ -9,25 +10,32 @@ import { CartContext } from '../../context/CartContextProvider';
 // function
 import { isInCart, quantityCount, shortenedTitle } from '../helper/functions';
 
+// icons
+import { FaRegMinusSquare, FaTrash, FaRegPlusSquare } from "react-icons/fa";
+
 const Product = ({productData}) => {
 
     const {state, dispatch} = useContext(CartContext)
 
     return (
         <div className={styles.container}>
-            <img src={productData.image} alt={productData.title} />
-            <div>
-                <p className={styles.container__title}>{shortenedTitle(productData.title)}</p>
-                <p>{productData.price}</p>
+            <img src={productData.image} alt={productData.title} className={styles.proImage} />
+            <div className={styles.topSection}>
+                <p className={styles.containerTitle}>{shortenedTitle(productData.title)}</p>
+                <p>${productData.price}</p>
             </div>
-            <p>Details</p>
-            {quantityCount(state, productData.id) === 1 && <button onClick={() => dispatch({type: "REMOVE_ITEM", payload: productData})}>remove</button>}
-            {quantityCount(state, productData.id) > 1 && <button onClick={() => dispatch({type: "DECREASE", payload: productData})}>-</button>}
-            {
-                isInCart(state, productData.id) ?
-                <button onClick={() => dispatch({type: "INCREASE", payload: productData})}>add</button>:
-                <button onClick={() => dispatch({type: "ADD_ITEM", payload: productData})}>add to cart</button>
-            }
+            <div className={styles.downSection}>
+                <Link to="/details" className={styles.proDetails}>Details</Link>
+                <div className={styles.btnContainer}>
+                    {quantityCount(state, productData.id) === 1 && <button className={styles.trashBtn} onClick={() => dispatch({type: "REMOVE_ITEM", payload: productData})}><FaTrash /></button>}
+                    {quantityCount(state, productData.id) > 1 && <button className={styles.decreaceBtn} onClick={() => dispatch({type: "DECREASE", payload: productData})}><FaRegMinusSquare /></button>}
+                    {
+                        isInCart(state, productData.id) ?
+                        <button className={styles.plusBtn} onClick={() => dispatch({type: "INCREASE", payload: productData})}><FaRegPlusSquare /></button>:
+                        <button className={styles.addBtn} onClick={() => dispatch({type: "ADD_ITEM", payload: productData})}>add to cart</button>
+                    }
+                </div>
+            </div>
         </div>
     );
 };

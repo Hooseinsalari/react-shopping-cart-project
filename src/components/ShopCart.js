@@ -1,48 +1,67 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 
 // component
-import Cart from './shared/Cart';
+import Cart from "./shared/Cart";
 
 // context
-import { CartContext } from '../context/CartContextProvider';
-import { Link } from 'react-router-dom';
+import { CartContext } from "../context/CartContextProvider";
+
+// styles
+import styles from "./ShopCart.module.css";
 
 const ShopCart = () => {
+  const { state, dispatch } = useContext(CartContext);
 
-    const {state, dispatch} = useContext(CartContext)
+  return (
+    <div className={styles.container}>
+      <div className={styles.cartContainer}>
+        {state.selectedItems.map((item) => (
+          <Cart key={item.id} data={item} />
+        ))}
+      </div>
 
-    return (
-        <div>
-          {
-              state.selectedItems.map((item) => <Cart key={item.id} data={item} />)
-          }  
-
-          {
-              state.itemsCounter > 0 && <div>
-                  <p><span>Total Items:</span> {state.itemsCounter}</p>
-                  <p><span>Total Payment:</span> {state.total}</p>
-                  <div>
-                        <button onClick={() => dispatch({type: "CLEAR"})}>Clear</button>
-                        <button onClick={() => dispatch({type: "CHECK_OUT"})}>Check Out</button>
-                  </div>
-              </div>
-          }
-
-          {
-              state.checkout && <div>
-                  <h3>Check out successfully</h3>
-                  <p>Do yo want more? <Link to="/">Back to shop</Link></p>
-              </div>
-          }
-
-        {
-            !state.checkout && state.itemsCounter === 0 && <div>
-                <h3>Want to buy?</h3>
-                <Link to="/">Back to shop</Link>
-            </div>
-        }
+      
+      {state.itemsCounter > 0 && (
+        <div className={styles.payments}>
+          <p>
+            <span>Total Items: </span>
+            {state.itemsCounter}
+          </p>
+          <p>
+            <span>Total Payments: </span>${state.total}
+          </p>
+          <div className={styles.buttonContainer}>
+            <button
+              className={styles.clear}
+              onClick={() => dispatch({ type: "CLEAR" })}
+            >
+              Clear
+            </button>
+            <button
+              className={styles.checkout}
+              onClick={() => dispatch({ type: "CHEKOUT" })}
+            >
+              Checkout
+            </button>
+          </div>
         </div>
-    );
+      )}
+      {state.checkout && (
+        <div className={styles.complete}>
+          <p>Check Out Successfully</p>
+          <Link to="/store">Buy More</Link>
+        </div>
+      )}
+
+      {!state.checkout && state.itemsCounter === 0 && (
+        <div className={styles.complete}>
+          <p>Do you want to buy?</p>
+          <Link to="/store">Back To Shop</Link>
+        </div>
+      )}
+      </div>
+  );
 };
 
 export default ShopCart;

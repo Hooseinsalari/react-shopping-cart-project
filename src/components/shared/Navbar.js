@@ -22,13 +22,13 @@ const Navbar = () => {
             <div className={styles.navBars}></div>
         </div>
       <div className={isOpen ? styles.openMenu : styles.navItems}>
-          <Link to="/">Home</Link>
-          <Link to="/store">Store</Link>
-          <Link to="/">Faverite</Link>
-          <Link to="/">About</Link>
+          <Link to="/"  className={styles.navLink} >Home</Link>
+          <Link to="/store" className={styles.navLink} >Store</Link>
+          <Link to="/" className={styles.navLink} >Faverite</Link>
+          <Link to="/" className={styles.navLink} >About</Link>
       </div>
     <div className={styles.navCart}>
-        <Link to="/cart" className={styles.navLogo}><span><FaShoppingCart /></span></Link>
+        <Link to="/cart" className={styles.navLogo} ><span><FaShoppingCart /></span></Link>
         <span className={styles.proCount}>{state.itemsCounter}</span>
     </div>      
     </div>
