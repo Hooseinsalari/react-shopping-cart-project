@@ -40,7 +40,7 @@ const ShopCart = () => {
             </button>
             <button
               className={styles.checkout}
-              onClick={() => dispatch({ type: "CHEKOUT" })}
+              onClick={() => dispatch({ type: "CHECK_OUT" })}
             >
               Checkout
             </button>

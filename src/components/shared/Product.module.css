@@ -6,6 +6,7 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   transition: all 0.3s ease-in-out;
   height: 23rem;
+  width: 16rem;
 }
 
 .container:hover {
@@ -39,6 +40,12 @@
     opacity: 1;
 }
 
+.btnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .btnContainer button {
     outline: none;
     transition: background-color 0.3s ease-in-out ;
@@ -60,21 +67,73 @@
 }
 
 .plusBtn, .decreaceBtn {
-    font-size: 20px;
-    margin: 0 3px 5px;
-    padding: 5px 7px;
+    font-size: 28px;
+    margin: 0 5px;
     border: none;
 }
 
 .trashBtn {
-    margin: 0 3px 5px;
-    border: 1px solid #000;
-    /* padding: 5px 7px; */
+    margin-bottom: 7px;
+    margin-right: 3px;
+    border: 2px solid #000;
     font-size: 20px;
+    padding: 1px;
+    height: 26px;
+    border-radius: 3px;
+    color: #dc2626;
+
 }
 
 img {
   width: 15rem;
   height: 15rem;
   overflow: hidden;
+}
+
+@media (max-width: 624px) {
+    .container {
+        height: 21rem;
+        margin: 18px;
+        width: 14rem;
+    }
+    img {
+        width: 13rem;
+        height: 13rem;
+        overflow: hidden;
+      }
+}
+
+@media (max-width: 524px) {
+    .container {
+        height: 18rem;
+        margin: 15px;
+        width: 12rem;
+    }
+    img {
+        width: 10rem;
+        height: 10rem;
+        overflow: hidden;
+      }
+
+    .topSection {
+        font-size: 15px;
+    }
+
+    .proDetails {
+        font-size: 15px;
+    }
+
+    .addBtn {
+        font-size: 16px;
+    }
+
+    .plusBtn, .decreaceBtn {
+        font-size: 22px;
+    }
+
+    .trashBtn {
+        font-size: 15px;
+        height: 22px;
+        margin-bottom: 6px;
+    }
 }

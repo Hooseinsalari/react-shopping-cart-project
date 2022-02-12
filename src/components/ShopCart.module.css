@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
-    margin-top: 50px;
+    margin-top: 70px;
 }
 
 .cartContainer {
@@ -13,12 +13,13 @@
 /* payment */
 
 .payments {
-    width: 27%;
+    width: 100%;
     background: #fff;
     border: 1px solid silver;
     border-radius: 5px;
     text-align: left;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 70px;
   }
   
   .payments p {
@@ -70,6 +71,10 @@
   .clear:hover {
     color: #167d32;
   }
+
+  .complete {
+    margin-top: 70px;
+  }
   
   .complete h3 {
     color: #167d32;
@@ -115,10 +120,7 @@
       width: 100%;
     }
   
-    .payments {
-      width: 20rem;
-      margin-bottom: 20px;
-    }
+    
   }
   
   @media (max-width: 768px) {
@@ -126,10 +128,6 @@
       margin: 20px 40px 50px;
     }
 
-    .payments {
-        width: 15rem;
-        margin-bottom: 20px;
-      }
   }
   
   @media (max-width: 555px) {
