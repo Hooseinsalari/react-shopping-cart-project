@@ -22,6 +22,7 @@ function App() {
             <Route path="/store" element={<StorePage />} />
             <Route path="/" element={<HomePage />} />
           </Routes>
+          <h1></h1>
         </div>
       </CartContextProvider>
     </ProductsContextProvider>

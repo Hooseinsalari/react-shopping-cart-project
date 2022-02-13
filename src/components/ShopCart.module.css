@@ -4,6 +4,7 @@
     justify-content: space-around;
     align-items: flex-start;
     margin-top: 70px;
+    margin-bottom: 100px;
 }
 
 .cartContainer {
@@ -13,7 +14,7 @@
 /* payment */
 
 .payments {
-    width: 100%;
+    width: 18rem;
     background: #fff;
     border: 1px solid silver;
     border-radius: 5px;
