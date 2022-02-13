@@ -24,6 +24,10 @@
     padding: 5px;
 }
 
+.containerTitle {
+    text-align: left;
+}
+
 .downSection {
     margin-top: 37px;
 }
@@ -87,10 +91,11 @@
 
 }
 
-img {
+.proImage {
   width: 15rem;
   height: 15rem;
   overflow: hidden;
+  margin: auto;
 }
 
 @media (max-width: 624px) {
@@ -99,7 +104,7 @@ img {
         margin: 18px;
         width: 14rem;
     }
-    img {
+    .proImage {
         width: 13rem;
         height: 13rem;
         overflow: hidden;
@@ -109,10 +114,10 @@ img {
 @media (max-width: 524px) {
     .container {
         height: 18rem;
-        margin: 15px;
         width: 12rem;
+        margin: 8px;
     }
-    img {
+    .proImage {
         width: 10rem;
         height: 10rem;
         overflow: hidden;
@@ -139,4 +144,17 @@ img {
         height: 22px;
         margin-bottom: 6px;
     }
+}
+
+@media (max-width: 417px) {
+    .container {
+        height: 18rem;
+        width: 10rem;
+        margin: 4px;
+    }
+    .proImage {
+        width: 9rem;
+        height: 10rem;
+        overflow: hidden;
+      }
 }

@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Router, Routes, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 // components
 import StorePage from './components/StorePage';
@@ -22,7 +22,6 @@ function App() {
             <Route path="/store" element={<StorePage />} />
             <Route path="/" element={<HomePage />} />
           </Routes>
-          <h1></h1>
         </div>
       </CartContextProvider>
     </ProductsContextProvider>

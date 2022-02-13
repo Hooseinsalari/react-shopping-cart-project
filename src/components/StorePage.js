@@ -1,5 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 
+// react-select
+import Select from 'react-select';
+
 // component
 import Product from "./shared/Product";
 
@@ -28,15 +31,26 @@ const StorePage = () => {
     setSearch("")
   }, [selectValue])
 
-  const filterHandler = (event) => {
-    setSelectValue(event.target.value)
-    const updateProducts = products.filter((product) => product.category.includes(event.target.value))
+  useEffect(() => {
+    setSelectValue({value: "", label: "All"})
+  }, [])
+
+  const selectOptions = [
+    {value: "", label: "All"},
+    {value: "clothing", label: "clothing"},
+    {value: "jewelery", label: "jewelery"},
+    {value: "electronics", label: "electronics"}
+  ]
+
+  const filterHandler = (selectedOption) => {
+    setSelectValue(selectedOption)
+    const updateProducts = products.filter((product) => product.category.includes(selectedOption.value))
     setFilteredProducts(updateProducts)
   }
 
   const searchHandler = (event) => {
     setSearch(event.target.value);
-    const updateProducts = products.filter((product) => product.category.includes(selectValue))
+    const updateProducts = products.filter((product) => product.category.includes(selectValue.value))
     if(search !== "") {
       const filterProducts = updateProducts.filter((product) => product.title.toLowerCase().includes(search.toLowerCase()))
     setFilteredProducts(filterProducts) 
@@ -51,13 +65,19 @@ const StorePage = () => {
       {products.length ? (
         <>
           <div className={styles.searchSection}>
-            <input type="text" value={search} onChange={searchHandler} />
-            <select onChange={filterHandler}>
+            <input type="text" value={search} onChange={searchHandler} placeholder="Search product" />
+            {/* <select onChange={filterHandler}>
               <option value="">All</option>
               <option value="clothing">clothing</option>
               <option value="jewelery">jewelery</option>
               <option value="electronics">electronics</option>
-            </select>
+            </select> */}
+            <Select
+              value={selectValue}
+              onChange={filterHandler}
+              options={selectOptions}
+              className={styles.select}
+            />
           </div>
           <div className={styles.container}>
           {filteredProducts.map((product) => (
