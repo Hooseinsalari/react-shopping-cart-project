@@ -22,7 +22,7 @@ const StorePage = () => {
   const [selectValue, setSelectValue] = useState("")
 
   useEffect(() => {
-    if(products) {
+    if(products.length) {
       setFilteredProducts(products)
     }
   }, [products])
@@ -51,27 +51,16 @@ const StorePage = () => {
   const searchHandler = (event) => {
     setSearch(event.target.value);
     const updateProducts = products.filter((product) => product.category.includes(selectValue.value))
-    if(search !== "") {
-      const filterProducts = updateProducts.filter((product) => product.title.toLowerCase().includes(search.toLowerCase()))
-    setFilteredProducts(filterProducts) 
-    }    
-  }
-
-  
+    const searchProducts = updateProducts.filter((product) => product.title.toLowerCase().includes(event.target.value.toLowerCase())) 
+    setFilteredProducts(searchProducts)
+  } 
 
   return (
     <div className={styles.storePage}>
-
       {products.length ? (
         <>
           <div className={styles.searchSection}>
             <input type="text" value={search} onChange={searchHandler} placeholder="Search product" />
-            {/* <select onChange={filterHandler}>
-              <option value="">All</option>
-              <option value="clothing">clothing</option>
-              <option value="jewelery">jewelery</option>
-              <option value="electronics">electronics</option>
-            </select> */}
             <Select
               value={selectValue}
               onChange={filterHandler}
