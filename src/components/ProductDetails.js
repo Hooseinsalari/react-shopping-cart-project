@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 // styles
 import styles from "./ProductDetails.module.css"
@@ -19,10 +19,10 @@ const ProductDetails = () => {
     const products = useContext(ProductsContext)
 
     const params = useParams()
-    const id = params.id
-    const index = id - 1
+    // const id = params.id
+    // const index = id - 1
 
-    const [data, setData] = useState([])
+    const [data, setData] = useState(null)
 
     useEffect(() => {
         const fetchApi = async () => {
@@ -32,6 +32,8 @@ const ProductDetails = () => {
         fetchApi()
     }, [products])
 
+    // console.log(shortenedTitle(data.title))
+
     return (
         <div className={styles.container}>
             {
@@ -39,9 +41,14 @@ const ProductDetails = () => {
                 <div className={styles.product}>
                     <img src={data.image} alt="logo" className={styles.proImage} />
                     <div className={styles.proData}>
-                        <h2 className={styles.proTitle}>{data.title}</h2>
-                        <p className={styles.proPrice}>${data.price}</p>
+                        <div className={styles.topSection}>
+                            <h2 className={styles.proTitle}>{shortenedTitle(data.title)}</h2>
+                            <p className={styles.proPrice}>${data.price}</p>
+                        </div>
                         <p className={styles.proDesc}>{data.description}</p>
+                        <div className={styles.footer}>
+                            <Link to="/products" className={styles.backLink}>Back to shop</Link>
+                        </div>
                     </div>
                 </div>:
             <h1>Loading</h1>

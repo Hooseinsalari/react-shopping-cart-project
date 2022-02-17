@@ -3,7 +3,7 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .heafLeft {
@@ -37,9 +37,9 @@
     text-decoration: none;
 }
 
-@media (max-width: 1012px) {
-    .headRight {
-        width: 20rem;
+@media (max-width: 988px) {
+    .headRight img {
+        width: 25rem;
     }
 }
 
@@ -55,7 +55,7 @@
     }
 
     .headRight img {
-        width: 25rem;
+        width: 21rem;
         text-align: center;
     }
 }   

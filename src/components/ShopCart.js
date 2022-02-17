@@ -50,14 +50,14 @@ const ShopCart = () => {
       {state.checkout && (
         <div className={styles.complete}>
           <p>Check Out Successfully</p>
-          <Link to="/store">Buy More</Link>
+          <Link to="/products">Buy More</Link>
         </div>
       )}
 
       {!state.checkout && state.itemsCounter === 0 && (
         <div className={styles.complete}>
           <p>Do you want to buy?</p>
-          <Link to="/store">Back To Shop</Link>
+          <Link to="/products">Back To Shop</Link>
         </div>
       )}
       </div>

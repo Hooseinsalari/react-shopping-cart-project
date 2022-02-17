@@ -37,26 +37,6 @@ const cartReducer = (state, action) => {
                 ...sumItems(newSelectedItems)
             }
 
-        case "FAVORITE":
-            if(!state.favoriteItems.find((item) => item.id === action.payload.id)) {
-                state.favoriteItems.push({
-                    ...action.payload,
-                    favotite: true
-                }) 
-            }
-
-            return {
-                ...state,
-                favoriteItems: [...state.favoriteItems],
-                ...sumItems(state.selectedItems),
-                checkout: false
-            }
-        case "REMOVE_FAVORITE":
-            const newFavoriteItems = state.favoriteItems.filter((item) => item.id !== action.payload.id)
-            return {
-                ...state,
-                favoriteItems: [...newFavoriteItems],
-            }
         case "INCREASE": 
             const indexI = state.selectedItems.findIndex((item) => item.id === action.payload.id)
             state.selectedItems[indexI].quantity++;

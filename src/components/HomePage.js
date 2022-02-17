@@ -21,7 +21,7 @@ const HomePage = () => {
     <div className={styles.container}>
         <div className={styles.heafLeft}>
           <h1 className={styles.firstText}>WELCOME TO SHOP</h1>
-          <Link to="/store" className={styles.storeLink}>
+          <Link to="/products" className={styles.storeLink}>
             <h3 className={styles.text}>Let's see store</h3>
           </Link>
         </div>

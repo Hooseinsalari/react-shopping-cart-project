@@ -23,8 +23,8 @@ const Navbar = () => {
         </div>
       <div className={isOpen ? styles.openMenu : styles.navItems}>
           <Link to="/"  className={styles.navLink} >Home</Link>
-          <Link to="/store" className={styles.navLink} >Store</Link>
-          <Link to="/" className={styles.navLink} >Faverite</Link>
+          <Link to="/products" className={styles.navLink} >Store</Link>
+          <Link to="/" className={styles.navLink} >Contact</Link>
           <Link to="/" className={styles.navLink} >About</Link>
       </div>
     <div className={styles.navCart}>
