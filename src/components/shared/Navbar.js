@@ -24,7 +24,7 @@ const Navbar = () => {
       <div className={isOpen ? styles.openMenu : styles.navItems}>
           <Link to="/"  className={styles.navLink} >Home</Link>
           <Link to="/products" className={styles.navLink} >Store</Link>
-          <Link to="/" className={styles.navLink} >Contact</Link>
+          <Link to="/favorite" className={styles.navLink} >Favorite</Link>
           <Link to="/" className={styles.navLink} >About</Link>
       </div>
     <div className={styles.navCart}>

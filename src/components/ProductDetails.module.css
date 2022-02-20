@@ -1,6 +1,6 @@
 .container {
     /* background-color: rgb(0, 65, 65); */
-    margin: 130px auto 50px;
+    margin: 150px auto 50px;
   /* border: 1px solid red; */
   
 }
@@ -15,7 +15,7 @@
     padding: 20px 10px;
     background-color: #fefefe;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-
+  border-radius: 5px;
 }
 
 .proData {
@@ -63,6 +63,7 @@
   padding: 5px;
   border-radius: 5px;
   transition: all 0.3s ease-in;
+  color: #2382ff;
 }
 
 .backLink:hover {

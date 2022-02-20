@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 // style
@@ -12,8 +12,10 @@ import { isInCart, quantityCount, shortenedTitle } from "../helper/functions";
 
 // icons
 import { FaMinus, FaTrash, FaPlus } from "react-icons/fa";
+import { FcLikePlaceholder, FcLike } from "react-icons/fc";
 
-const Product = ({ productData }) => {
+
+const Product = ({ productData, addToFavorite, removeFromFavorite, favoriteItems }) => {
   const { state, dispatch } = useContext(CartContext);
 
   return (
@@ -23,6 +25,18 @@ const Product = ({ productData }) => {
         alt={productData.title}
         className={styles.proImage}
       />
+
+      <div>
+        {
+          favoriteItems.find((product) => product.id === productData.id && product.isFavorite) ?
+          // <button className={styles.remveFavorite} onClick={() => removeFromFavorite(productData.id)}><FcLike /></button>:
+          // <button className={styles.addFavorite} onClick={() => addToFavorite(productData.id)}><FcLikePlaceholder /></button>
+          <FcLike className={styles.remveFavorite} onClick={() => removeFromFavorite(productData.id)} />:
+          <FcLikePlaceholder className={styles.addFavorite} onClick={() => addToFavorite(productData.id)} />
+
+        }
+        
+      </div>
 
       <div className={styles.topSection}>
         <p className={styles.containerTitle}>

@@ -12,15 +12,15 @@ import { shortenedTitle } from './helper/functions';
 
 // api
 import { getOneProductApi } from '../services/api';
-import axios from 'axios';
+
+// component
+import Loading from './shared/Loading';
 
 const ProductDetails = () => {
 
     const products = useContext(ProductsContext)
 
     const params = useParams()
-    // const id = params.id
-    // const index = id - 1
 
     const [data, setData] = useState(null)
 
@@ -28,11 +28,9 @@ const ProductDetails = () => {
         const fetchApi = async () => {
              setData(await getOneProductApi(params.id))
         }
-
         fetchApi()
     }, [products])
 
-    // console.log(shortenedTitle(data.title))
 
     return (
         <div className={styles.container}>
@@ -51,7 +49,7 @@ const ProductDetails = () => {
                         </div>
                     </div>
                 </div>:
-            <h1>Loading</h1>
+            <Loading />
             }
         </div>
     );

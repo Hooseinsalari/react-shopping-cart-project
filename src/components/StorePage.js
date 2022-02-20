@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
 
 // react-select
 import Select from 'react-select';
@@ -12,6 +13,7 @@ import { ProductsContext } from "../context/ProductsContextProvider";
 // style
 import styles from "./StorePage.module.css";
 import Loading from "./shared/Loading";
+import FavoriteProducts from "./FavoriteProducts";
 
 const StorePage = () => {
 
@@ -55,6 +57,23 @@ const StorePage = () => {
     setFilteredProducts(searchProducts)
   } 
 
+  // for favorite items
+  const [favoriteItems, setFavoriteItems] = useState([])
+
+  const addToFavorite = (id) => {
+    const index = products.findIndex((p) => p.id === id)
+    const selectedProduct = {...products[index], isFavorite: true}
+    if(!favoriteItems.find((product) => product.id === id)) {
+      setFavoriteItems([...favoriteItems, selectedProduct])
+    }    
+  }
+
+  const removeFromFavorite = (id) => {
+    const updateFavoriteItems = favoriteItems.filter((product) => product.id !== id)
+    // console.log(updateFavoriteItems)
+    setFavoriteItems(updateFavoriteItems)
+  }
+
   return (
     <div className={styles.storePage}>
       {products.length ? (
@@ -70,13 +89,14 @@ const StorePage = () => {
           </div>
           <div className={styles.container}>
           {filteredProducts.map((product) => (
-            <Product key={product.id} productData={product} />
+            <Product key={product.id} productData={product} favoriteItems={favoriteItems} addToFavorite={addToFavorite} removeFromFavorite={removeFromFavorite} />
           ))}
           </div>
         </>
       ) : (
         <Loading />
       )}
+      
     </div>
   );
 };

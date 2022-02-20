@@ -2,7 +2,6 @@ import React, { createContext, useReducer } from 'react';
 
 const initialState = {
     selectedItems : [],
-    favoriteItems: [],
     itemsCounter: 0,
     total: 0,
     checkout: false
