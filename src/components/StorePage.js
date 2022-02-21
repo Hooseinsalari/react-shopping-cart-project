@@ -1,84 +1,102 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 // react-select
-import Select from 'react-select';
+import Select from "react-select";
 
 // component
 import Product from "./shared/Product";
+import Loading from "./shared/Loading";
 
-// context
-import { ProductsContext } from "../context/ProductsContextProvider";
+// redux
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProducts } from "../redux/products/productsActions";
 
 // style
 import styles from "./StorePage.module.css";
-import Loading from "./shared/Loading";
 
-const StorePage = ({favoriteItems, setFavoriteItems}) => {
+const StorePage = ({ favoriteItems, setFavoriteItems }) => {
+  // const products = useContext(ProductsContext);
 
-  const products = useContext(ProductsContext);
-
-  const [filteredProducts, setFilteredProducts] = useState([])
-  const [search, setSearch] = useState("")
-  const [selectValue, setSelectValue] = useState("")
+  const productsState = useSelector((state) => state.productsState);
+  const products = productsState.products;
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if(products.length) {
-      setFilteredProducts(products)
+    if (!products.length) dispatch(fetchProducts());
+  }, []);
+
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [search, setSearch] = useState("");
+  const [selectValue, setSelectValue] = useState("");
+
+  useEffect(() => {
+    if (products.length) {
+      setFilteredProducts(products);
     }
-  }, [products])
+  }, [products]);
 
   useEffect(() => {
-    setSearch("")
-  }, [selectValue])
+    setSearch("");
+  }, [selectValue]);
 
   useEffect(() => {
-    setSelectValue({value: "", label: "All"})
-  }, [])
+    setSelectValue({ value: "", label: "All" });
+  }, []);
 
   const selectOptions = [
-    {value: "", label: "All"},
-    {value: "clothing", label: "clothing"},
-    {value: "jewelery", label: "jewelery"},
-    {value: "electronics", label: "electronics"}
-  ]
+    { value: "", label: "All" },
+    { value: "clothing", label: "clothing" },
+    { value: "jewelery", label: "jewelery" },
+    { value: "electronics", label: "electronics" },
+  ];
 
   const filterHandler = (selectedOption) => {
-    setSelectValue(selectedOption)
-    const updateProducts = products.filter((product) => product.category.includes(selectedOption.value))
-    setFilteredProducts(updateProducts)
-  }
+    setSelectValue(selectedOption);
+    const updateProducts = products.filter((product) =>
+      product.category.includes(selectedOption.value)
+    );
+    setFilteredProducts(updateProducts);
+  };
 
   const searchHandler = (event) => {
     setSearch(event.target.value);
-    const updateProducts = products.filter((product) => product.category.includes(selectValue.value))
-    const searchProducts = updateProducts.filter((product) => product.title.toLowerCase().includes(event.target.value.toLowerCase())) 
-    setFilteredProducts(searchProducts)
-  } 
+    const updateProducts = products.filter((product) =>
+      product.category.includes(selectValue.value)
+    );
+    const searchProducts = updateProducts.filter((product) =>
+      product.title.toLowerCase().includes(event.target.value.toLowerCase())
+    );
+    setFilteredProducts(searchProducts);
+  };
 
   // for favorite items
-  // const [favoriteItems, setFavoriteItems] = useState([])
-
-  // const [favoriteItems, setFavoriteItems] = useContext(favoriteProducts)
 
   const addToFavorite = (id) => {
-    const index = products.findIndex((p) => p.id === id)
-    const selectedProduct = {...products[index], isFavorite: true}
-    if(!favoriteItems.find((product) => product.id === id)) {
-      setFavoriteItems([...favoriteItems, selectedProduct])
-    }    
-  }
+    const index = products.findIndex((p) => p.id === id);
+    const selectedProduct = { ...products[index], isFavorite: true };
+    if (!favoriteItems.find((product) => product.id === id)) {
+      setFavoriteItems([...favoriteItems, selectedProduct]);
+    }
+  };
 
   const removeFromFavorite = (id) => {
-    const updateFavoriteItems = favoriteItems.filter((product) => product.id !== id)
-    setFavoriteItems(updateFavoriteItems)
-  }
+    const updateFavoriteItems = favoriteItems.filter(
+      (product) => product.id !== id
+    );
+    setFavoriteItems(updateFavoriteItems);
+  };
 
   return (
     <div className={styles.storePage}>
-      {products.length ? (
+      {!productsState.isLoading ? (
         <>
           <div className={styles.searchSection}>
-            <input type="text" value={search} onChange={searchHandler} placeholder="Search product" />
+            <input
+              type="text"
+              value={search}
+              onChange={searchHandler}
+              placeholder="Search product"
+            />
             <Select
               value={selectValue}
               onChange={filterHandler}
@@ -87,14 +105,30 @@ const StorePage = ({favoriteItems, setFavoriteItems}) => {
             />
           </div>
           <div className={styles.container}>
-          {filteredProducts.map((product) => (
-            <Product key={product.id} productData={product} favoriteItems={favoriteItems} addToFavorite={addToFavorite} removeFromFavorite={removeFromFavorite} />
-          ))}
+            {filteredProducts.map((product) => (
+              <Product
+                key={product.id}
+                productData={product}
+                favoriteItems={favoriteItems}
+                addToFavorite={addToFavorite}
+                removeFromFavorite={removeFromFavorite}
+              />
+            ))}
           </div>
         </>
       ) : (
         <Loading />
       )}
+      {/* {
+        productsState.isLoading ?
+        <Loading /> :
+        productsState.error ?
+        <h1>something is wrong</h1> :
+        productsState.products.map((product) => <Product
+        key={product.id} 
+        productData={product}
+        />)
+      } */}
     </div>
   );
 };

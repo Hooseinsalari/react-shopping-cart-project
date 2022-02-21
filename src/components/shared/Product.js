@@ -1,11 +1,12 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 // style
 import styles from "./Product.module.css";
 
-// context
-import { CartContext } from "../../context/CartContextProvider";
+// redux
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 // function
 import { isInCart, quantityCount, shortenedTitle } from "../helper/functions";
@@ -14,9 +15,17 @@ import { isInCart, quantityCount, shortenedTitle } from "../helper/functions";
 import { FaMinus, FaTrash, FaPlus } from "react-icons/fa";
 import { FcLikePlaceholder, FcLike } from "react-icons/fc";
 
+// Actions
+import { addItem, removeItem, increase, decrease } from "../../redux/cart/cartActions";
 
-const Product = ({ productData, addToFavorite, removeFromFavorite, favoriteItems }) => {
-  const { state, dispatch } = useContext(CartContext);
+const Product = ({
+  productData,
+  addToFavorite,
+  removeFromFavorite,
+  favoriteItems,
+}) => {
+  const state = useSelector((state) => state.cartState);
+  const dispatch = useDispatch();
 
   return (
     <div className={styles.container}>
@@ -27,15 +36,19 @@ const Product = ({ productData, addToFavorite, removeFromFavorite, favoriteItems
       />
 
       <div>
-        {
-          favoriteItems.find((product) => product.id === productData.id && product.isFavorite) ?
-          // <button className={styles.remveFavorite} onClick={() => removeFromFavorite(productData.id)}><FcLike /></button>:
-          // <button className={styles.addFavorite} onClick={() => addToFavorite(productData.id)}><FcLikePlaceholder /></button>
-          <FcLike className={styles.remveFavorite} onClick={() => removeFromFavorite(productData.id)} />:
-          <FcLikePlaceholder className={styles.addFavorite} onClick={() => addToFavorite(productData.id)} />
-
-        }
-        
+        {favoriteItems.find(
+          (product) => product.id === productData.id && product.isFavorite
+        ) ? (
+          <FcLike
+            className={styles.remveFavorite}
+            onClick={() => removeFromFavorite(productData.id)}
+          />
+        ) : (
+          <FcLikePlaceholder
+            className={styles.addFavorite}
+            onClick={() => addToFavorite(productData.id)}
+          />
+        )}
       </div>
 
       <div className={styles.topSection}>
@@ -53,7 +66,7 @@ const Product = ({ productData, addToFavorite, removeFromFavorite, favoriteItems
             <button
               className={styles.trashBtn}
               onClick={() =>
-                dispatch({ type: "REMOVE_ITEM", payload: productData })
+                dispatch(removeItem(productData))
               }
             >
               <FaTrash />
@@ -63,7 +76,7 @@ const Product = ({ productData, addToFavorite, removeFromFavorite, favoriteItems
             <button
               className={styles.decreaceBtn}
               onClick={() =>
-                dispatch({ type: "DECREASE", payload: productData })
+                dispatch(decrease(productData))
               }
             >
               <FaMinus />
@@ -78,7 +91,7 @@ const Product = ({ productData, addToFavorite, removeFromFavorite, favoriteItems
             <button
               className={styles.plusBtn}
               onClick={() =>
-                dispatch({ type: "INCREASE", payload: productData })
+                dispatch(increase(productData))
               }
             >
               <FaPlus />
@@ -87,7 +100,7 @@ const Product = ({ productData, addToFavorite, removeFromFavorite, favoriteItems
             <button
               className={styles.addBtn}
               onClick={() =>
-                dispatch({ type: "ADD_ITEM", payload: productData })
+                dispatch(addItem(productData))
               }
             >
               add to cart

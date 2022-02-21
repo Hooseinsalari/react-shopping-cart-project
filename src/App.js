@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React , { useState } from 'react';
 import './App.css';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
@@ -10,16 +10,15 @@ import HomePage from './components/HomePage';
 import ProductDetails from './components/ProductDetails';
 import FavoriteProducts from './components/FavoriteProducts';
 
-// context
-import CartContextProvider from './context/CartContextProvider';
-import ProductsContextProvider from './context/ProductsContextProvider';
+// redux
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 function App() {
   const [favoriteItems, setFavoriteItems] = useState([])
 
   return (
-    <ProductsContextProvider>
-      <CartContextProvider>
+    <Provider store={store}>
           <Navbar />
           <div className='App'>
             <Routes>
@@ -31,8 +30,7 @@ function App() {
               <Route path='/*' element={<Navigate to="/" />} />
             </Routes>
           </div>
-      </CartContextProvider>
-    </ProductsContextProvider>
+      </Provider>
   );
 }
 

@@ -1,58 +1,57 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { useParams, Link } from "react-router-dom";
 
 // styles
-import styles from "./ProductDetails.module.css"
-
-// context
-import { ProductsContext } from '../context/ProductsContextProvider';
+import styles from "./ProductDetails.module.css";
 
 // function
-import { shortenedTitle } from './helper/functions';
+import { shortenedTitle } from "./helper/functions";
 
 // api
-import { getOneProductApi } from '../services/api';
+import { getOneProductApi } from "../services/api";
 
 // component
-import Loading from './shared/Loading';
+import Loading from "./shared/Loading";
+import { useSelector } from "react-redux";
 
 const ProductDetails = () => {
+  const params = useParams();
+  const data = useSelector((state) => state.productsState.products);
 
-    const products = useContext(ProductsContext)
+  const [product, setProduct] = useState(data[params.id - 1]);
 
-    const params = useParams()
+  if (!product) {
+    const fetchApi = async () => {
+      setProduct(await getOneProductApi(params.id));
+    };
+    fetchApi();
+  }
 
-    const [data, setData] = useState(null)
-
-    useEffect(() => {
-        const fetchApi = async () => {
-             setData(await getOneProductApi(params.id))
-        }
-        fetchApi()
-    }, [products])
-
-
-    return (
-        <div className={styles.container}>
-            {
-                data ?
-                <div className={styles.product}>
-                    <img src={data.image} alt="logo" className={styles.proImage} />
-                    <div className={styles.proData}>
-                        <div className={styles.topSection}>
-                            <h2 className={styles.proTitle}>{shortenedTitle(data.title)}</h2>
-                            <p className={styles.proPrice}>${data.price}</p>
-                        </div>
-                        <p className={styles.proDesc}>{data.description}</p>
-                        <div className={styles.footer}>
-                            <Link to="/products" className={styles.backLink}>Back to shop</Link>
-                        </div>
-                    </div>
-                </div>:
-            <Loading />
-            }
+  return (
+    <div className={styles.container}>
+      {product ? (
+        <div className={styles.product}>
+          <img src={product.image} alt="logo" className={styles.proImage} />
+          <div className={styles.proData}>
+            <div className={styles.topSection}>
+              <h2 className={styles.proTitle}>
+                {shortenedTitle(product.title)}
+              </h2>
+              <p className={styles.proPrice}>${product.price}</p>
+            </div>
+            <p className={styles.proDesc}>{product.description}</p>
+            <div className={styles.footer}>
+              <Link to="/products" className={styles.backLink}>
+                Back to shop
+              </Link>
+            </div>
+          </div>
         </div>
-    );
+      ) : (
+        <Loading />
+      )}
+    </div>
+  );
 };
 
 export default ProductDetails;
