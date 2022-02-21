@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
 
 // react-select
 import Select from 'react-select';
@@ -13,9 +12,8 @@ import { ProductsContext } from "../context/ProductsContextProvider";
 // style
 import styles from "./StorePage.module.css";
 import Loading from "./shared/Loading";
-import FavoriteProducts from "./FavoriteProducts";
 
-const StorePage = () => {
+const StorePage = ({favoriteItems, setFavoriteItems}) => {
 
   const products = useContext(ProductsContext);
 
@@ -58,7 +56,9 @@ const StorePage = () => {
   } 
 
   // for favorite items
-  const [favoriteItems, setFavoriteItems] = useState([])
+  // const [favoriteItems, setFavoriteItems] = useState([])
+
+  // const [favoriteItems, setFavoriteItems] = useContext(favoriteProducts)
 
   const addToFavorite = (id) => {
     const index = products.findIndex((p) => p.id === id)
@@ -70,7 +70,6 @@ const StorePage = () => {
 
   const removeFromFavorite = (id) => {
     const updateFavoriteItems = favoriteItems.filter((product) => product.id !== id)
-    // console.log(updateFavoriteItems)
     setFavoriteItems(updateFavoriteItems)
   }
 
@@ -96,7 +95,6 @@ const StorePage = () => {
       ) : (
         <Loading />
       )}
-      
     </div>
   );
 };

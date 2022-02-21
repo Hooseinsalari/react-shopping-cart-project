@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
@@ -14,20 +15,22 @@ import CartContextProvider from './context/CartContextProvider';
 import ProductsContextProvider from './context/ProductsContextProvider';
 
 function App() {
+  const [favoriteItems, setFavoriteItems] = useState([])
+
   return (
     <ProductsContextProvider>
       <CartContextProvider>
-        <Navbar />
-        <div className='App'>
-          <Routes>
-            <Route path='/products/:id' element={<ProductDetails />} />
-            <Route path="/cart" element={<ShopCart />} />
-            <Route path="/products" element={<StorePage />} />
-            <Route path='/favorite' element={<FavoriteProducts />} />
-            <Route path="/" element={<HomePage />} />
-            <Route path='/*' element={<Navigate to="/" />} />
-          </Routes>
-        </div>
+          <Navbar />
+          <div className='App'>
+            <Routes>
+              <Route path='/products/:id' element={<ProductDetails />} />
+              <Route path="/cart" element={<ShopCart />} />
+              <Route path="/products" element={<StorePage favoriteItems={favoriteItems} setFavoriteItems={setFavoriteItems} />} />
+              <Route path='/favorite' element={<FavoriteProducts favoriteItems={favoriteItems} setFavoriteItems={setFavoriteItems} />} />
+              <Route path="/" element={<HomePage />} />
+              <Route path='/*' element={<Navigate to="/" />} />
+            </Routes>
+          </div>
       </CartContextProvider>
     </ProductsContextProvider>
   );
