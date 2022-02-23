@@ -38,7 +38,7 @@ const Navbar = () => {
       <div className={styles.navCart}>
         <Link to="/cart" className={styles.navLogo}>
           <span>
-            <FaShoppingCart />
+            <FaShoppingCart className={styles.cartIcon} />
           </span>
         </Link>
         <span className={styles.proCount}>{cartState.itemsCounter}</span>

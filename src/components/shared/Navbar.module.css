@@ -73,6 +73,10 @@
     cursor: pointer;
 }
 
+.cartIcon {
+    color: #002a6e;
+}
+
 @media (max-width: 600px) {
 
     .navItems , .openMenu {
