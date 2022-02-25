@@ -79,11 +79,12 @@
 
 .addBtn {
   font-size: 18px;
-  padding: 3px;
-  border: 2px solid #15803d;
-  background-color: #22c55e;
+  padding: 5px;
+  border: none;
+  outline: none;
+  background-color: #2cbc63;
   border-radius: 5px;
-  color: #f0fdf4;
+  color: #fff;
   font-weight: 500;
 }
 

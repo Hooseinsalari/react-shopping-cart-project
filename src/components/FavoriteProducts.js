@@ -10,23 +10,8 @@ import styles from "./FavoriteProducts.module.css";
 // redux
 import { useSelector } from "react-redux";
 
-const FavoriteProducts = ({ favoriteItems, setFavoriteItems }) => {
-  const products = useSelector((state) => state.productsState);
-
-  const addToFavorite = (id) => {
-    const index = products.findIndex((p) => p.id === id);
-    const selectedProduct = { ...products[index], isFavorite: true };
-    if (!favoriteItems.find((product) => product.id === id)) {
-      setFavoriteItems([...favoriteItems, selectedProduct]);
-    }
-  };
-
-  const removeFromFavorite = (id) => {
-    const updateFavoriteItems = favoriteItems.filter(
-      (product) => product.id !== id
-    );
-    setFavoriteItems(updateFavoriteItems);
-  };
+const FavoriteProducts = () => {
+  const favoriteItems = useSelector((state) => state.favoriteState.favoriteItems)
 
   return (
     <div className={styles.container}>
@@ -34,9 +19,6 @@ const FavoriteProducts = ({ favoriteItems, setFavoriteItems }) => {
         <Product
           key={product.id}
           productData={product}
-          favoriteItems={favoriteItems}
-          addToFavorite={addToFavorite}
-          removeFromFavorite={removeFromFavorite}
         />
       )) : <div className={styles.emptyAlert}>
             <h1>Your Favorite Items Is Empty</h1>

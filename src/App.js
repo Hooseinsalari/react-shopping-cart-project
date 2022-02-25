@@ -1,6 +1,5 @@
-import React , { useState } from 'react';
-import './App.css';
 import { Route, Routes, Navigate } from 'react-router-dom';
+import './App.css';
 
 // components
 import StorePage from './components/StorePage';
@@ -15,7 +14,6 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 
 function App() {
-  const [favoriteItems, setFavoriteItems] = useState([])
 
   return (
     <Provider store={store}>
@@ -24,8 +22,8 @@ function App() {
             <Routes>
               <Route path='/products/:id' element={<ProductDetails />} />
               <Route path="/cart" element={<ShopCart />} />
-              <Route path="/products" element={<StorePage favoriteItems={favoriteItems} setFavoriteItems={setFavoriteItems} />} />
-              <Route path='/favorite' element={<FavoriteProducts favoriteItems={favoriteItems} setFavoriteItems={setFavoriteItems} />} />
+              <Route path="/products" element={<StorePage />} />
+              <Route path='/favorite' element={<FavoriteProducts />} />
               <Route path="/" element={<HomePage />} />
               <Route path='/*' element={<Navigate to="/" />} />
             </Routes>

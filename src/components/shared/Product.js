@@ -16,17 +16,25 @@ import { FaMinus, FaTrash, FaPlus } from "react-icons/fa";
 import { FcLikePlaceholder, FcLike } from "react-icons/fc";
 
 // Actions
-import { addItem, removeItem, increase, decrease } from "../../redux/cart/cartActions";
+import {
+  addItem,
+  removeItem,
+  increase,
+  decrease,
+} from "../../redux/cart/cartActions";
 
-const Product = ({
-  productData,
+import {
   addToFavorite,
   removeFromFavorite,
-  favoriteItems,
-}) => {
-  const state = useSelector((state) => state.cartState);
-  const dispatch = useDispatch();
+} from "../../redux/favorite/favoriteActions";
 
+const Product = ({ productData }) => {
+  const state = useSelector((state) => state.cartState);
+  const favoriteItems = useSelector(
+    (state) => state.favoriteState.favoriteItems
+  );
+  const products = useSelector((state) => state.productsState.products);
+  const dispatch = useDispatch();
   return (
     <div className={styles.container}>
       <img
@@ -41,12 +49,14 @@ const Product = ({
         ) ? (
           <FcLike
             className={styles.remveFavorite}
-            onClick={() => removeFromFavorite(productData.id)}
+            onClick={() =>
+              dispatch(removeFromFavorite(productData.id, products))
+            }
           />
         ) : (
           <FcLikePlaceholder
             className={styles.addFavorite}
-            onClick={() => addToFavorite(productData.id)}
+            onClick={() => dispatch(addToFavorite(productData.id, products))}
           />
         )}
       </div>
@@ -65,9 +75,7 @@ const Product = ({
           {quantityCount(state, productData.id) === 1 && (
             <button
               className={styles.trashBtn}
-              onClick={() =>
-                dispatch(removeItem(productData))
-              }
+              onClick={() => dispatch(removeItem(productData))}
             >
               <FaTrash />
             </button>
@@ -75,9 +83,7 @@ const Product = ({
           {quantityCount(state, productData.id) > 1 && (
             <button
               className={styles.decreaceBtn}
-              onClick={() =>
-                dispatch(decrease(productData))
-              }
+              onClick={() => dispatch(decrease(productData))}
             >
               <FaMinus />
             </button>
@@ -90,18 +96,14 @@ const Product = ({
           {isInCart(state, productData.id) ? (
             <button
               className={styles.plusBtn}
-              onClick={() =>
-                dispatch(increase(productData))
-              }
+              onClick={() => dispatch(increase(productData))}
             >
               <FaPlus />
             </button>
           ) : (
             <button
               className={styles.addBtn}
-              onClick={() =>
-                dispatch(addItem(productData))
-              }
+              onClick={() => dispatch(addItem(productData))}
             >
               add to cart
             </button>

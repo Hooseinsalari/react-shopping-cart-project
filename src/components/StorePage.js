@@ -14,9 +14,7 @@ import { fetchProducts } from "../redux/products/productsActions";
 // style
 import styles from "./StorePage.module.css";
 
-const StorePage = ({ favoriteItems, setFavoriteItems }) => {
-  // const products = useContext(ProductsContext);
-
+const StorePage = () => {
   const productsState = useSelector((state) => state.productsState);
   const products = productsState.products;
   const dispatch = useDispatch();
@@ -69,23 +67,6 @@ const StorePage = ({ favoriteItems, setFavoriteItems }) => {
     setFilteredProducts(searchProducts);
   };
 
-  // for favorite items
-
-  const addToFavorite = (id) => {
-    const index = products.findIndex((p) => p.id === id);
-    const selectedProduct = { ...products[index], isFavorite: true };
-    if (!favoriteItems.find((product) => product.id === id)) {
-      setFavoriteItems([...favoriteItems, selectedProduct]);
-    }
-  };
-
-  const removeFromFavorite = (id) => {
-    const updateFavoriteItems = favoriteItems.filter(
-      (product) => product.id !== id
-    );
-    setFavoriteItems(updateFavoriteItems);
-  };
-
   return (
     <div className={styles.storePage}>
       {!productsState.isLoading ? (
@@ -109,9 +90,6 @@ const StorePage = ({ favoriteItems, setFavoriteItems }) => {
               <Product
                 key={product.id}
                 productData={product}
-                favoriteItems={favoriteItems}
-                addToFavorite={addToFavorite}
-                removeFromFavorite={removeFromFavorite}
               />
             ))}
           </div>
@@ -119,16 +97,6 @@ const StorePage = ({ favoriteItems, setFavoriteItems }) => {
       ) : (
         <Loading />
       )}
-      {/* {
-        productsState.isLoading ?
-        <Loading /> :
-        productsState.error ?
-        <h1>something is wrong</h1> :
-        productsState.products.map((product) => <Product
-        key={product.id} 
-        productData={product}
-        />)
-      } */}
     </div>
   );
 };
