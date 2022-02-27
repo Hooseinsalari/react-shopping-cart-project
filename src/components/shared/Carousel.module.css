@@ -1,6 +1,6 @@
 .swiper {
     width: 100%;
-    height: 100%;
+    height: 29rem;
 }
 
 .swiperSlide {
@@ -28,7 +28,15 @@
     object-fit: cover;
   } */
 
-:global(.swiper-pagination-bullet) {
+  :global(.swiper-pagination-bullet) {
     display: none;
 }
 
+
+
+/* responsive */
+@media (max-width: 470px) {
+  .swiper {
+    height: 23rem;
+}
+}

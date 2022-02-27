@@ -40,9 +40,13 @@ const Carousel = ({category}) => {
   
   const breakpoints = {
     320: {
-      slidesPerView: 1,
+      slidesPerView: 2,
       spaceBetween: 5,
     },
+    // 340: {
+    //   slidesPerView: 2,
+    //   spaceBetween: 3,
+    // },
     420: {
       slidesPerView: 2,
       spaceBetween: 5,
@@ -71,7 +75,7 @@ const Carousel = ({category}) => {
           loop={true}
           pagination={{
             clickable: true,
-
+            bulletClass: "swiper-pagination-bullet"
           }}
           breakpoints={breakpoints}
           modules={[FreeMode, Pagination, Navigation]}
