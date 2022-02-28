@@ -50,9 +50,7 @@ const HomePage = () => {
           <section>
             <Carousel category="jewelery" />
           </section>
-          <div className={styles.parallax}>
-            {/* image added in css code */}
-          </div>
+          <div className={styles.parallax}>{/* image added in css code */}</div>
           <section>
             <Carousel category="electronics" />
           </section>

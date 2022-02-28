@@ -11,19 +11,22 @@ import styles from "./FavoriteProducts.module.css";
 import { useSelector } from "react-redux";
 
 const FavoriteProducts = () => {
-  const favoriteItems = useSelector((state) => state.favoriteState.favoriteItems)
+  const favoriteItems = useSelector(
+    (state) => state.favoriteState.favoriteItems
+  );
 
   return (
     <div className={styles.container}>
-      {favoriteItems.length ? favoriteItems.map((product) => (
-        <Product
-          key={product.id}
-          productData={product}
-        />
-      )) : <div className={styles.emptyAlert}>
-            <h1>Your Favorite Items Is Empty</h1>
-            <Link to="/products">Let's add your favorite</Link>
-          </div>} 
+      {favoriteItems.length ? (
+        favoriteItems.map((product) => (
+          <Product key={product.id} productData={product} />
+        ))
+      ) : (
+        <div className={styles.emptyAlert}>
+          <h1>Your Favorite Items Is Empty</h1>
+          <Link to="/products">Let's add your favorite</Link>
+        </div>
+      )}
     </div>
   );
 };

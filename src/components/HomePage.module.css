@@ -1,110 +1,111 @@
 .container {
-    margin-bottom: 70px;
+  margin-bottom: 70px;
 }
 
 .header {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    box-shadow: 0px -15px 25px #000;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0px -15px 25px #000;
 }
 
 .heafLeft {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
 }
 
 .firstText {
-    font-size: 4rem;
-    text-align: center;
+  font-size: 4rem;
+  text-align: center;
 }
 
 .headRight {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .headRight img {
-    width: 35rem;
-    height: 30rem;
-    text-align: center;
+  width: 35rem;
+  height: 30rem;
+  text-align: center;
 }
 
 .storeLink {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-.poster img{
-    height: 20rem;
-    width: 40rem;
-    margin: 20px;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
+.poster img {
+  height: 20rem;
+  width: 40rem;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .parallax {
-    background-image: url("../image/parallax.jpg");
-    height: 13rem;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 4px 15px;
-  }
+  background-image: url("../image/parallax.jpg");
+  height: 13rem;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 4px 15px;
+}
+
+/* responsive */
 
 @media (max-width: 988px) {
-    .headRight img {
-        width: 25rem;
-    }
+  .headRight img {
+    width: 25rem;
+  }
 }
 
 @media (max-width: 700px) {
-    .header {
-        flex-direction: column;
-        margin-top: 64px;
-    }
+  .header {
+    flex-direction: column;
+    margin-top: 64px;
+  }
 
-    .firstText {
-        font-size: 4rem;
-        /* text-align: center; */
-        margin-top: 10px;
-    }
+  .firstText {
+    font-size: 4rem;
+    /* text-align: center; */
+    margin-top: 10px;
+  }
 
-    .headRight img {
-        width: 21rem;
-        text-align: center;
-    }
+  .headRight img {
+    width: 21rem;
+    text-align: center;
+  }
 
-    .poster img {
-        width: 25rem;
-    }
-}   
+  .poster img {
+    width: 25rem;
+  }
+}
 
 @media (max-width: 460px) {
-    .poster img {
-        width: 20rem;
-        height: 15rem;
-    }
+  .poster img {
+    width: 20rem;
+    height: 15rem;
+  }
 }
 
 @media (max-width: 360px) {
-    .poster img {
-        width: 17rem;
-        height: 15rem;
-    }
+  .poster img {
+    width: 17rem;
+    height: 15rem;
+  }
 }
 
 @media (max-width: 332px) {
-    .headRight img {
-        width: 20rem;
-        height: 20rem;
-        text-align: center;
-    }
+  .headRight img {
+    width: 20rem;
+    height: 20rem;
+    text-align: center;
+  }
 }

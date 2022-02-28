@@ -87,10 +87,7 @@ const StorePage = () => {
           </div>
           <div className={styles.container}>
             {filteredProducts.map((product) => (
-              <Product
-                key={product.id}
-                productData={product}
-              />
+              <Product key={product.id} productData={product} />
             ))}
           </div>
         </>

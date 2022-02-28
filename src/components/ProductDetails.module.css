@@ -1,39 +1,35 @@
 .container {
-    /* background-color: rgb(0, 65, 65); */
-    margin: 150px auto 50px;
-  /* border: 1px solid red; */
-  
+  margin: 150px auto 50px;
 }
 
 .product {
-    width: 50rem;
-    display: flex;
+  width: 50rem;
+  display: flex;
   align-items: center;
   justify-content: space-between;
- 
-    margin: auto;
-    padding: 20px 10px;
-    background-color: #fefefe;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+
+  margin: auto;
+  padding: 20px 10px;
+  background-color: #fefefe;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   border-radius: 5px;
 }
 
 .proData {
-    /* text-align: justify; */
-    width: 33rem;
-    margin: auto 20px;
-    /* margin-top: 20px; */
-    border: 1px solid gray;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    padding: 30px;
+  width: 33rem;
+  margin: auto 20px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  padding: 30px;
 }
 
 .topSection {
   display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .proPrice {
@@ -48,8 +44,8 @@
 }
 
 .proImage {
-    width: 18rem;
-    height: 17rem;
+  width: 18rem;
+  height: 17rem;
 }
 
 .footer {
@@ -71,8 +67,9 @@
   color: #fff;
 }
 
-@media (max-width: 840px) {
+/* responsive */
 
+@media (max-width: 840px) {
   .product {
     width: 40rem;
   }
@@ -83,7 +80,6 @@
 }
 
 @media (max-width: 667px) {
-
   .product {
     width: 35rem;
   }

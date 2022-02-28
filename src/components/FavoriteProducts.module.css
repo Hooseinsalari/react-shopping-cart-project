@@ -1,17 +1,17 @@
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 90px;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 90px;
+  flex-wrap: wrap;
 }
 
 .emptyAlert {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .emptyAlert a {
-    display: inline-block;
-    margin-top: 15px;
-    font-size: 20px;
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 20px;
 }

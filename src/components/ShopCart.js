@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // redux
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // component
 import Cart from "./shared/Cart";
@@ -36,10 +35,7 @@ const ShopCart = () => {
             <span>Total Payments: </span>${state.total}
           </p>
           <div className={styles.buttonContainer}>
-            <button
-              className={styles.clear}
-              onClick={() => dispatch(clear())}
-            >
+            <button className={styles.clear} onClick={() => dispatch(clear())}>
               Clear
             </button>
             <button

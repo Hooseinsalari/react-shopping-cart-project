@@ -6,9 +6,9 @@ import favoriteReducer from "./favorite/favoriteReducer";
 import productsReducer from "./products/productsReducer";
 
 const rootReducer = combineReducers({
-    productsState: productsReducer,
-    cartState: cartReducer,
-    favoriteState: favoriteReducer
-})
+  productsState: productsReducer,
+  cartState: cartReducer,
+  favoriteState: favoriteReducer,
+});
 
 export default rootReducer;

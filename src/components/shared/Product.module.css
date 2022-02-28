@@ -126,6 +126,8 @@
   margin: auto;
 }
 
+/* responsive */
+
 @media (max-width: 624px) {
   .container {
     height: 21rem;
