@@ -29,6 +29,7 @@ const About = () => {
         <a
           href="https://github.com/Hooseinsalari"
           target="_blank"
+          rel="noreferrer"
           className={styles.socialLink}
         >
           <FaGithub />
@@ -36,6 +37,7 @@ const About = () => {
         <a
           href="https://instagram.com/hossein.salari777"
           target="_blank"
+          rel="noreferrer"
           className={styles.socialLink}
         >
           <FaInstagram />
@@ -43,6 +45,7 @@ const About = () => {
         <a
           href="https://www.linkedin.com/in/hossein-salari-099543215/"
           target="_blank"
+          rel="noreferrer"
           className={styles.socialLink}
         >
           <FaLinkedinIn />
@@ -50,6 +53,7 @@ const About = () => {
         <a
           href="https://t.me/Hossein777s"
           target="_blank"
+          rel="noreferrer"
           className={styles.socialLink}
         >
           <FaTelegramPlane />
