@@ -31,7 +31,7 @@ const Navbar = () => {
         <Link to="/favorite" className={styles.navLink}>
           Favorite
         </Link>
-        <Link to="/" className={styles.navLink}>
+        <Link to="/about" className={styles.navLink}>
           About
         </Link>
       </div>

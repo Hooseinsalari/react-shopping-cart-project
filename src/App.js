@@ -8,6 +8,7 @@ import Navbar from './components/shared/Navbar';
 import HomePage from './components/HomePage';
 import ProductDetails from './components/ProductDetails';
 import FavoriteProducts from './components/FavoriteProducts';
+import About from './components/About';
 
 // redux
 import { Provider } from 'react-redux';
@@ -20,6 +21,7 @@ function App() {
           <Navbar />
           <div className='App'>
             <Routes>
+              <Route path='/about' element={<About />} />
               <Route path='/products/:id' element={<ProductDetails />} />
               <Route path="/cart" element={<ShopCart />} />
               <Route path="/products" element={<StorePage />} />
