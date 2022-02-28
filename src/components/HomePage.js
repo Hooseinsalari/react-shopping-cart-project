@@ -17,6 +17,8 @@ import styles from "./HomePage.module.css";
 // img
 import logo from "../image/logo.jpg";
 import firstPoster from "../image/first.jpg";
+import parallax from "../image/parallax.jpg";
+
 
 const HomePage = () => {
   const products = useSelector((state) => state.productsState.products);
@@ -50,7 +52,9 @@ const HomePage = () => {
           <section>
             <Carousel category="jewelery" />
           </section>
-          <div className={styles.parallax}>{/* image added in css code */}</div>
+          <div className={styles.poster}>
+            <img src={parallax} alt="logo" />
+          </div>
           <section>
             <Carousel category="electronics" />
           </section>
