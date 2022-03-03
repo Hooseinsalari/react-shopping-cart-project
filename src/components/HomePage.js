@@ -16,8 +16,8 @@ import styles from "./HomePage.module.css";
 
 // img
 import logo from "../image/logo.jpg";
-import firstPoster from "../image/first.jpg";
-import parallax from "../image/parallax.jpg";
+// import firstParallax from "../image/first.jpg";
+// import parallax from "../image/parallax.jpg";
 
 
 const HomePage = () => {
@@ -46,14 +46,14 @@ const HomePage = () => {
           <section>
             <Carousel category="clothing" />
           </section>
-          <div className={styles.poster}>
-            <img src={firstPoster} alt="logo" />
+          <div className={styles.firstParallax}>
+            {/* img added in css */}
           </div>
           <section>
             <Carousel category="jewelery" />
           </section>
-          <div className={styles.poster}>
-            <img src={parallax} alt="logo" />
+          <div className={styles.parallax}>
+            {/* img added in css */}
           </div>
           <section>
             <Carousel category="electronics" />
